@@ -1,0 +1,18 @@
+{% extends 'stocker/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+{% endblock %}
+
+{% block body_block %}
+	<h1>Bem-vindo...</h1>
+	<div>
+		<strong>{{ boldmessage }}</strong><br />
+	</div>
+	<div>
+		<ul>
+			<li><a href="{% url 'register' %}">Cadastro</a></li>
+			<li><a href="{% url 'login' %}">Login</a></li>
+		</ul>
+	</div>
+{% endblock body_block %}
