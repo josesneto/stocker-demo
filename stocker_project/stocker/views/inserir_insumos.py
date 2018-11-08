@@ -1,9 +1,25 @@
-#encoding: utf-8
+from ..models import Insumo
+from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from django.http import HttpResponse
-from rango.models import *
+from django.views.generic.base import View
+#from .login_required import LoginRequiredMixin
+from ..forms import InsumoForm
 
-def inserir_insumos(request):
-    lista_insumos = Insumo.objects.order_by('nome')
-    context_dict = {'insumos': lista_insumos}
-    return render(request, 'stocker/inserir_insumos.html', context_dict)
+
+class inserir_insumos(View):
+    form_class = InsumoForm
+    initial = {}
+    template_name = 'stocker/inserir_insumos.html'
+
+    def get(self, request, *args, **kwargs):
+        form = self.form_class(initial=self.initial)
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST)
+        if form.is_valid():
+            form.save(commit=True)
+            return HttpResponseRedirect(reverse('index'))
+
+        return render(request, self.template_name, {'form': form})

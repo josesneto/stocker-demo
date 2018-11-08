@@ -1,6 +1,6 @@
 from django.db import models
 from django.template.defaultfilters import slugify
-from ..models import UserProfile, Unidade_Medida
+from ..models import UserProfile
 
 
 class Insumo(models.Model):
@@ -9,7 +9,6 @@ class Insumo(models.Model):
     ativo = models.BooleanField(default=1)
     data = models.DateField(auto_now=True)
     slug = models.SlugField(unique=True)
-    unidade_medida = models.ForeignKey(Unidade_Medida)
     user = models.ForeignKey(UserProfile)
 
     def save(self, *args, **kwargs):

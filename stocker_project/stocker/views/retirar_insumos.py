@@ -1,7 +1,6 @@
-#encoding: utf-8
 from django.shortcuts import render
-from django.http import HttpResponse
-from rango.models import *
+from ..models import Insumo
+
 
 def retirar_insumos(request):
     lista_insumos = Insumo.objects.order_by('nome')

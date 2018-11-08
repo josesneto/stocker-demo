@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from stocker.forms import UserForm, UserProfileForm
+from ..forms import UserForm, UserProfileForm
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
