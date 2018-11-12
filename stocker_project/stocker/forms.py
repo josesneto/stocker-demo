@@ -19,4 +19,5 @@ class UserProfileForm(forms.ModelForm):
 class InsumoForm(forms.ModelForm):
 	class Meta:
 		model = Insumo
-		fields = '__all__'
+		fields = ('nome', 'quantidade', )
+
